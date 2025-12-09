@@ -1,0 +1,497 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: hsl(200, 40%, 8%);
+    color: hsl(0, 0%, 95%);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll on mobile */
+}
+
+/* Navbar */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: rgba(20, 40, 60, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid hsl(200, 20%, 20%);
+    padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 5vw, 2rem);
+    transition: all 0.3s ease;
+}
+
+nav .container {
+    max-width: 80rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+    color: hsl(180, 100%, 45%);
+    text-decoration: none;
+}
+
+.logo span {
+    display: block;
+    line-height: 1.2;
+}
+
+nav ul.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+}
+
+nav a {
+    color: hsl(0, 0%, 95%);
+    text-decoration: none;
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+    font-weight: 500;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    color: hsl(180, 100%, 45%);
+    opacity: 1;
+}
+
+/* Hamburger Button */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 51;
+}
+
+.hamburger span {
+    width: 2rem;
+    height: 0.2rem;
+    background: hsl(180, 100%, 45%);
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    transform-origin: 1px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 5vw, 2rem);
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    padding-top: clamp(6rem, 10vw, 8rem);
+    padding-bottom: clamp(3rem, 5vw, 5rem);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: url('images/zawaya 3.png') no-repeat center center/cover;
+    background-attachment: fixed; /* Parallax effect, but fallback to scroll on mobile */
+    background-position: center 20%; /* Slight adjustment for better mobile fit */
+}
+
+.hero .content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    text-align: left;
+    padding-left: 0; /* Align to edge on large screens */
+}
+
+/* Hero .container padding override for left alignment */
+.hero .container {
+    padding-left: 0;
+    padding-right: clamp(1rem, 5vw, 2rem);
+}
+
+/* 1. ZAWAYA HAUS (Main Title) */
+.hero-main-title {
+    position: relative;
+    display: inline-block;
+    font-size: clamp(3rem, 12vw, 6.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: 0.10em;
+    margin-top: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 0;
+    margin-left: clamp(-10rem, -15vw, -15rem); /* Responsive negative margin */
+    max-width: 90vw; /* Prevent overflow */
+}
+
+/* HAUS Alignment */
+.haus-aligner {
+    position: absolute;
+    font-size: 0.7em; 
+    font-weight: 700;
+    line-height: 1;
+    bottom: -3rem; 
+    right: 0; 
+    background: linear-gradient(
+    90deg, 
+    hsl(180, 100%, 75%) 0%,  
+    hsl(180, 100%, 45%) 100% 
+     );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.target{
+    background: linear-gradient(
+    90deg, 
+    hsl(180, 100%, 75%) 0%,  
+    hsl(180, 94%, 43%) 100% 
+     );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.align-target {
+    letter-spacing: 0.15em; 
+    background: linear-gradient(
+    90deg, 
+    hsl(180, 52%, 60%) 0%,  
+    hsl(238, 74%, 9%) 100% 
+     );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+/* Finding the unseen angle */
+.hero-tagline-main {
+    font-size: clamp(1.25rem, 3.5vw, 3rem);
+    font-weight: 700;
+    color: hsl(180, 100%, 45%);
+    margin-top: clamp(8rem, 20vw, 15rem); /* Responsive top margin */
+    line-height: 1.2;
+    max-width: 90vw;
+}
+
+/* A creative lab built on... */
+.hero-tagline-sub {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: hsl(0, 0%, 80%);
+    max-width: 45rem;
+    margin-top: 1rem;
+    max-width: 90vw;
+}
+
+/* Sections */
+section {
+    padding: clamp(3rem, 8vw, 5rem) 0;
+}
+
+section h3 {
+    font-size: clamp(1.75rem, 6vw, 3.5rem);
+    font-weight: 700;
+    color: hsl(180, 100%, 45%);
+    margin-bottom: clamp(1.5rem, 4vw, 3rem);
+    text-align: center;
+}
+
+section h4 {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: 700;
+    color: hsl(180, 100%, 45%);
+    margin: clamp(1.5rem, 4vw, 2rem) 0 clamp(0.75rem, 2vw, 1rem);
+}
+
+section h5 {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-weight: 700;
+    color: hsl(180, 100%, 45%);
+    margin: clamp(1rem, 3vw, 1.5rem) 0 clamp(0.5rem, 1.5vw, 0.75rem);
+}
+
+.section-text {
+    max-width: 80rem;
+    margin: 0 auto;
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    color: hsl(0, 0%, 90%);
+    line-height: 1.8;
+}
+
+.section-text p {
+    margin-bottom: clamp(1rem, 3vw, 1.5rem);
+}
+
+/* SERVICES SECTION (FIXED) */
+.services {
+    padding: clamp(5rem, 10vw, 8rem) 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: url('images/zawaya 32.png') no-repeat center center/cover;
+    background-position: center 50%; /* Adjusted for better mobile centering */
+    background-attachment: fixed; /* Parallax, fallback on mobile */
+}
+
+.services .container {
+    position: relative;
+    z-index: 10;
+}
+
+.how-we-work {
+    background: hsl(200, 40%, 8%);
+}
+
+.capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(1.5rem, 4vw, 3rem);
+    margin-top: clamp(1rem, 3vw, 2rem);
+}
+
+.capability-item h5 {
+    margin-top: 0;
+}
+
+.capability-item p {
+    font-size: clamp(0.875rem, 2vw, 1rem);
+}
+
+.contact {
+    background: hsl(200, 40%, 8%);
+}
+
+.contact-box {
+    background: hsla(200, 35%, 15%, 0.5);
+    border: 1px solid hsla(180, 100%, 45%, 0.2);
+    border-radius: 0.5rem;
+    padding: clamp(1.5rem, 4vw, 2rem);
+    margin-top: clamp(1rem, 3vw, 2rem);
+}
+
+.contact-box a {
+    color: hsl(180, 100%, 45%);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.contact-box a:hover {
+    opacity: 0.8;
+}
+
+.decorative-section {
+    background: hsl(200, 40%, 8%);
+    padding: clamp(3rem, 8vw, 5rem) 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.triangle-svg {
+    width: min(400px, 80vw);
+    height: auto;
+    opacity: 0.4;
+    max-width: 100%;
+}
+
+/* Footer */
+footer {
+    background: hsl(200, 40%, 8%);
+    border-top: 1px solid hsl(200, 20%, 20%);
+    padding: clamp(2rem, 6vw, 3rem) 0;
+    text-align: center;
+}
+
+footer h3 {
+    color: hsl(180, 100%, 45%);
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    margin-bottom: 0.5rem;
+}
+
+footer p {
+    color: hsl(200, 70%, 50%); /* Converted to HSL for consistency */
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+}
+
+/* Utility */
+.list-unstyled {
+    list-style: none;
+}
+
+.list-unstyled li {
+    margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
+    color: hsl(0, 0%, 80%);
+    font-size: clamp(0.875rem, 2vw, 1rem);
+}
+
+.belief-box {
+    margin-top: clamp(1.5rem, 4vw, 2rem);
+    padding-top: clamp(1.5rem, 4vw, 2rem);
+    border-top: 1px solid hsla(180, 100%, 45%, 0.2);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    nav ul.nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(20, 40, 60, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+
+    nav ul.nav-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    nav ul.nav-menu li {
+        text-align: center;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid hsla(180, 100%, 45%, 0.1);
+    }
+
+    nav ul.nav-menu li:last-child {
+        border-bottom: none;
+    }
+
+    /* Hero adjustments for mobile */
+    .hero {
+        background-attachment: scroll; /* Disable parallax on mobile for performance */
+        background-position: center 30%; /* Adjusted to show more of the image without heavy cropping - focus on upper part */
+        background-size: cover; /* Keep cover but position to reveal key areas */
+        min-height: 90vh; /* Slightly increased for better fit */
+        padding-top: clamp(5rem, 15vw, 6rem);
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-bottom: 2rem;
+    }
+
+    .hero-main-title {
+        margin-left: 0; /* Remove negative margin on mobile to center/align better */
+        font-size: clamp(2.5rem, 10vw, 4rem);
+        letter-spacing: 0.05em;
+        margin-top: clamp(1rem, 4vw, 2rem); /* Less top margin for title on small screens */
+    }
+
+    .hero-tagline-main {
+        margin-top: clamp(8rem, 25vw, 12rem); /* Increased top margin to distance from title */
+        font-size: clamp(1.25rem, 4vw, 2rem);
+        text-align: left;
+    }
+
+    .hero-tagline-sub {
+        font-size: clamp(0.875rem, 3vw, 1.125rem);
+        max-width: 100%;
+        margin-top: 1.5rem; /* Extra space between taglines */
+    }
+
+    .hero .container {
+        padding-left: clamp(1rem, 5vw, 2rem); /* Add padding on mobile for safety */
+    }
+
+    /* Services background */
+    .services {
+        background-attachment: scroll;
+        background-position: center 40%; /* Adjusted similarly for services image */
+        background-size: cover;
+        min-height: 80vh;
+    }
+
+    /* Sections */
+    section {
+        padding: clamp(2rem, 6vw, 3rem) 0;
+    }
+
+    section h3 {
+        text-align: center;
+    }
+
+    .capabilities-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .capability-item p {
+        font-size: 0.875rem;
+    }
+
+    /* Decorative */
+    .decorative-section {
+        padding: clamp(2rem, 6vw, 3rem) 0;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Extra small screens */
+    .hero-main-title {
+        margin-left: 0;
+    }
+
+    .hero-tagline-main {
+        margin-top: clamp(6rem, 20vw, 10rem); /* Even more space on very small screens */
+    }
+
+    nav {
+        padding: 0.75rem 1rem;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    /* Fine-tune image position for tiniest screens */
+    .hero {
+        background-position: center 25%; /* Pull image up more to avoid bottom cropping */
+    }
+    .haus-aligner {
+        bottom: clamp(-2.5rem, -2.2vw, -1.2rem);
+    }
+
+}
