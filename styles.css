@@ -9,7 +9,7 @@ body {
     background: hsl(200, 40%, 8%);
     color: hsl(0, 0%, 95%);
     line-height: 1.6;
-    overflow-x: hidden; /* Prevent horizontal scroll on mobile */
+    overflow-x: hidden;
 }
 
 /* Navbar */
@@ -41,6 +41,10 @@ nav .container {
     text-decoration: none;
 }
 
+.logo img {
+    width: 150px;
+}
+
 .logo span {
     display: block;
     line-height: 1.2;
@@ -59,6 +63,7 @@ nav a {
     font-size: clamp(0.75rem, 2vw, 0.875rem);
     font-weight: 500;
     opacity: 0.7;
+    position: relative;
     transition: all 0.3s ease;
 }
 
@@ -67,7 +72,24 @@ nav a:hover {
     opacity: 1;
 }
 
-/* Hamburger Button */
+/* الخط يكون مخفي */
+nav ul.nav-menu li a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: hsl(180, 100%, 45%);
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+/* يظهر من المنتصف */
+nav ul.nav-menu li a:hover::after {
+    width: 100%;
+}
+
 .hamburger {
     display: none;
     flex-direction: column;
@@ -109,6 +131,12 @@ nav a:hover {
     padding: 0 clamp(1rem, 5vw, 2rem);
 }
 
+.contai {
+    width: 75%;
+    margin: 0 auto;
+}
+
+
 /* Hero Section */
 .hero {
     min-height: 100vh;
@@ -119,25 +147,28 @@ nav a:hover {
     position: relative;
     overflow: hidden;
     background: url('images/zawaya 3.png') no-repeat center center/cover;
-    background-attachment: fixed; /* Parallax effect, but fallback to scroll on mobile */
-    background-position: center 20%; /* Slight adjustment for better mobile fit */
+    background-attachment: fixed;
+    background-position: center 20%;
+}
+
+
+.hero .container {
+    padding-left: 2rem;
+    /* background-color: red; */
+    /* دفع المحتوى للشمال */
+    padding-right: clamp(1rem, 5vw, 2rem);
 }
 
 .hero .content {
     position: relative;
     z-index: 10;
-    width: 100%;
+    /* width: 100%; */
     text-align: left;
-    padding-left: 0; /* Align to edge on large screens */
-}
-
-/* Hero .container padding override for left alignment */
-.hero .container {
     padding-left: 0;
-    padding-right: clamp(1rem, 5vw, 2rem);
 }
 
-/* 1. ZAWAYA HAUS (Main Title) */
+
+/* تحريك كلمة ZAWAYA HAUS للشمال أكتر */
 .hero-main-title {
     position: relative;
     display: inline-block;
@@ -147,35 +178,35 @@ nav a:hover {
     letter-spacing: 0.10em;
     margin-top: clamp(2rem, 5vw, 3rem);
     margin-bottom: 0;
-    margin-left: clamp(-10rem, -15vw, -15rem); /* Responsive negative margin */
-    max-width: 90vw; /* Prevent overflow */
+
+    /* ↓↓ أهم تعديل ↓↓ */
+    margin-left: -4rem;
+
+    max-width: 90vw;
 }
 
-/* HAUS Alignment */
+.hero-main-title img {
+    width: 550px;
+}
+
+/* ضبط الكلمة الصغيرة HAUS */
 .haus-aligner {
     position: absolute;
-    font-size: 0.7em; 
+    font-size: 0.7em;
     font-weight: 700;
     line-height: 1;
-    bottom: -3rem; 
-    right: 0; 
-    background: linear-gradient(
-    90deg, 
-    hsl(180, 100%, 75%) 0%,  
-    hsl(180, 100%, 45%) 100% 
-     );
+    bottom: -3rem;
+    right: 0;
+    background: linear-gradient(90deg, hsl(180, 100%, 75%) 0%, hsl(180, 100%, 45%) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
 }
 
-.target{
-    background: linear-gradient(
-    90deg, 
-    hsl(180, 100%, 75%) 0%,  
-    hsl(180, 94%, 43%) 100% 
-     );
+/* نفس ألوان الستايل */
+.target {
+    background: linear-gradient(90deg, hsl(180, 100%, 75%) 0%, hsl(180, 94%, 43%) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -183,40 +214,46 @@ nav a:hover {
 }
 
 .align-target {
-    letter-spacing: 0.15em; 
-    background: linear-gradient(
-    90deg, 
-    hsl(180, 52%, 60%) 0%,  
-    hsl(238, 74%, 9%) 100% 
-     );
+    letter-spacing: 0.15em;
+    background: linear-gradient(90deg, hsl(180, 52%, 60%) 0%, hsl(238, 74%, 9%) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
 }
 
-/* Finding the unseen angle */
+/* نقل الكلام تحت لليسار */
 .hero-tagline-main {
     font-size: clamp(1.25rem, 3.5vw, 3rem);
     font-weight: 700;
     color: hsl(180, 100%, 45%);
-    margin-top: clamp(8rem, 20vw, 15rem); /* Responsive top margin */
+    margin-top: clamp(4rem, 10vw, 12rem);
     line-height: 1.2;
+
+    text-align: left;
+    margin-left: 2rem;
+    /* دفعه للشمال */
     max-width: 90vw;
 }
 
-/* A creative lab built on... */
+/* نفس الشيء للسطر الثاني */
 .hero-tagline-sub {
     font-size: clamp(1rem, 2vw, 1.5rem);
     color: hsl(0, 0%, 80%);
-    max-width: 45rem;
     margin-top: 1rem;
-    max-width: 90vw;
+    text-align: left;
+    margin-left: 2rem;
+    /* دفعه للشمال */
+    /* max-width: 45rem; */
 }
 
-/* Sections */
+/* Sections - Full Screen */
 section {
+    min-height: 100vh;
     padding: clamp(3rem, 8vw, 5rem) 0;
+    display: flex;
+    align-items: center;
+    /* background-color: red; */
 }
 
 section h3 {
@@ -224,7 +261,7 @@ section h3 {
     font-weight: 700;
     color: hsl(180, 100%, 45%);
     margin-bottom: clamp(1.5rem, 4vw, 3rem);
-    text-align: center;
+    text-align: left;
 }
 
 section h4 {
@@ -253,7 +290,38 @@ section h5 {
     margin-bottom: clamp(1rem, 3vw, 1.5rem);
 }
 
-/* SERVICES SECTION (FIXED) */
+/* About Section with Background Image */
+/* ABOUT — SAME BACKGROUND STYLE AS SERVICES */
+.about {
+    padding: clamp(5rem, 10vw, 8rem) 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+
+    /* ← استخدم صورة الـ ABOUT هنا */
+    background: url('images/zawaya\ 31.png') no-repeat center center/cover;
+    background-position: center 50%;
+    background-attachment: fixed;
+}
+
+/* Overlay نفسه بتاع services */
+.about::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* background: rgba(10, 30, 45, 0.75); */
+    /* نفس اللي عندك حالياً */
+    z-index: 1;
+}
+
+.about .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Services Section with Background Image */
 .services {
     padding: clamp(5rem, 10vw, 8rem) 0;
     min-height: 100vh;
@@ -262,8 +330,8 @@ section h5 {
     position: relative;
     overflow: hidden;
     background: url('images/zawaya 32.png') no-repeat center center/cover;
-    background-position: center 50%; /* Adjusted for better mobile centering */
-    background-attachment: fixed; /* Parallax, fallback on mobile */
+    background-position: center 50%;
+    background-attachment: fixed;
 }
 
 .services .container {
@@ -290,6 +358,7 @@ section h5 {
     font-size: clamp(0.875rem, 2vw, 1rem);
 }
 
+
 .contact {
     background: hsl(200, 40%, 8%);
 }
@@ -313,21 +382,85 @@ section h5 {
 }
 
 .decorative-section {
-    background: hsl(200, 40%, 8%);
-    padding: clamp(3rem, 8vw, 5rem) 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-image: url('./images/web background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* أهم تعديل */
+    background-position: center bottom;
+    /* علشان أهم جزء يظهر */
 }
 
-.triangle-svg {
-    width: min(400px, 80vw);
-    height: auto;
-    opacity: 0.4;
-    max-width: 100%;
+/* تظليم بسيط من الجوانب (اختياري) */
+.decorative-section::before,
+.decorative-section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 15%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
 }
 
-/* Footer */
+/* يسار */
+.decorative-section::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.6), transparent);
+}
+
+/* يمين */
+.decorative-section::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.6), transparent);
+}
+
+
+@keyframes triangleFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+
+    25% {
+        transform: translateY(-20px) scale(1.1) rotate(5deg);
+    }
+
+    50% {
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+
+    75% {
+        transform: translateY(20px) scale(0.95) rotate(-5deg);
+    }
+}
+
+@keyframes triangleRotate {
+    0% {
+        transform: scale(0.8) rotate(0deg);
+    }
+
+    100% {
+        transform: scale(0.8) rotate(360deg);
+    }
+}
+
+@keyframes trianglePulse {
+
+    0%,
+    100% {
+        transform: scale(1.2);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: scale(1.4);
+        opacity: 0.5;
+    }
+}
+
 footer {
     background: hsl(200, 40%, 8%);
     border-top: 1px solid hsl(200, 20%, 20%);
@@ -342,11 +475,10 @@ footer h3 {
 }
 
 footer p {
-    color: hsl(200, 70%, 50%); /* Converted to HSL for consistency */
+    color: hsl(200, 70%, 50%);
     font-size: clamp(0.75rem, 2vw, 0.875rem);
 }
 
-/* Utility */
 .list-unstyled {
     list-style: none;
 }
@@ -363,7 +495,7 @@ footer p {
     border-top: 1px solid hsla(180, 100%, 45%, 0.2);
 }
 
-/* Media Queries for Responsiveness */
+/* Mobile */
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
@@ -401,12 +533,11 @@ footer p {
         border-bottom: none;
     }
 
-    /* Hero adjustments for mobile */
     .hero {
-        background-attachment: scroll; /* Disable parallax on mobile for performance */
-        background-position: center 30%; /* Adjusted to show more of the image without heavy cropping - focus on upper part */
-        background-size: cover; /* Keep cover but position to reveal key areas */
-        min-height: 90vh; /* Slightly increased for better fit */
+        background-attachment: scroll;
+        background-position: center 30%;
+        background-size: cover;
+        min-height: 90vh;
         padding-top: clamp(5rem, 15vw, 6rem);
         align-items: flex-start;
         justify-content: flex-start;
@@ -414,14 +545,14 @@ footer p {
     }
 
     .hero-main-title {
-        margin-left: 0; /* Remove negative margin on mobile to center/align better */
+        margin-left: 0;
         font-size: clamp(2.5rem, 10vw, 4rem);
         letter-spacing: 0.05em;
-        margin-top: clamp(1rem, 4vw, 2rem); /* Less top margin for title on small screens */
+        margin-top: clamp(1rem, 4vw, 2rem);
     }
 
     .hero-tagline-main {
-        margin-top: clamp(8rem, 25vw, 12rem); /* Increased top margin to distance from title */
+        margin-top: clamp(8rem, 25vw, 12rem);
         font-size: clamp(1.25rem, 4vw, 2rem);
         text-align: left;
     }
@@ -429,28 +560,27 @@ footer p {
     .hero-tagline-sub {
         font-size: clamp(0.875rem, 3vw, 1.125rem);
         max-width: 100%;
-        margin-top: 1.5rem; /* Extra space between taglines */
+        margin-top: 1.5rem;
     }
 
     .hero .container {
-        padding-left: clamp(1rem, 5vw, 2rem); /* Add padding on mobile for safety */
+        padding-left: clamp(1rem, 5vw, 2rem);
     }
 
-    /* Services background */
     .services {
         background-attachment: scroll;
-        background-position: center 40%; /* Adjusted similarly for services image */
+        background-position: center 40%;
         background-size: cover;
         min-height: 80vh;
     }
 
-    /* Sections */
     section {
         padding: clamp(2rem, 6vw, 3rem) 0;
+        min-height: 100vh;
     }
 
     section h3 {
-        text-align: center;
+        text-align: left;
     }
 
     .capabilities-grid {
@@ -462,20 +592,18 @@ footer p {
         font-size: 0.875rem;
     }
 
-    /* Decorative */
     .decorative-section {
         padding: clamp(2rem, 6vw, 3rem) 0;
     }
 }
 
 @media (max-width: 480px) {
-    /* Extra small screens */
     .hero-main-title {
         margin-left: 0;
     }
 
     .hero-tagline-main {
-        margin-top: clamp(6rem, 20vw, 10rem); /* Even more space on very small screens */
+        margin-top: clamp(6rem, 20vw, 10rem);
     }
 
     nav {
@@ -486,12 +614,30 @@ footer p {
         padding: 0 1rem;
     }
 
-    /* Fine-tune image position for tiniest screens */
     .hero {
-        background-position: center 25%; /* Pull image up more to avoid bottom cropping */
+        background-position: center 25%;
     }
+
     .haus-aligner {
         bottom: clamp(-2.5rem, -2.2vw, -1.2rem);
     }
+}
 
+.hero>.container {
+    margin-left: 0 !important;
+    /* فك التوسيط */
+    margin-right: 0 !important;
+    max-width: none !important;
+    /* خليه ياخد العرض كامل */
+    width: 100% !important;
+    padding-left: 0 !important;
+}
+
+/* الآن نرجّع المحتوى نفسه للشمال */
+.hero .content {
+    padding-left: 4rem !important;
+}
+
+.hero-main-title {
+    margin-left: 50px !important;
 }
